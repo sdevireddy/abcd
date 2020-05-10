@@ -14,40 +14,63 @@ public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Long city_id;
+	@Column(name = "city_id")
+	Long id;
 	
 	@Column(name = "city_name")
-	String cityName;
+	String name;
 	
 	@Column(name = "city_desc")
-	String cityDesc;
+	String desc;
 	
+	@Column(name = "state_id")
+	Long stateId;
 	
-	public Long getCity_id() {
-		return city_id;
+	@Column(name = "status")
+	int status;
+	
+	public Long getId() {
+		return id;
 	}
-	public void setCity_id(Long city_id) {
-		this.city_id = city_id;
+	public void setId(Long cityId) {
+		this.id = cityId;
 	}
-	public String getCityName() {
-		return cityName;
+	public String getName() {
+		return name;
 	}
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCityDesc() {
-		return cityDesc;
+	public String getDesc() {
+		return desc;
 	}
-	public void setCityDesc(String cityDesc) {
-		this.cityDesc = cityDesc;
+	public void setDesc(String cityDesc) {
+		this.desc = cityDesc;
 	}
+	
+	public Long getStateId(){
+		return stateId;
+	}
+	
+	public void setStateId(Long stateId) {
+		this.stateId = stateId;
+	}
+	
+	public int getStatus() {
+		return status;
+	}
+	
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cityDesc == null) ? 0 : cityDesc.hashCode());
-		result = prime * result + ((cityName == null) ? 0 : cityName.hashCode());
-		result = prime * result + ((city_id == null) ? 0 : city_id.hashCode());
+		result = prime * result + ((desc == null) ? 0 : desc.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 	@Override
@@ -59,29 +82,21 @@ public class City {
 		if (getClass() != obj.getClass())
 			return false;
 		City other = (City) obj;
-		if (cityDesc == null) {
-			if (other.cityDesc != null)
+		if (desc == null) {
+			if (other.desc != null)
 				return false;
-		} else if (!cityDesc.equals(other.cityDesc))
+		} else if (!desc.equals(other.desc))
 			return false;
-		if (cityName == null) {
-			if (other.cityName != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!cityName.equals(other.cityName))
+		} else if (!name.equals(other.name))
 			return false;
-		if (city_id == null) {
-			if (other.city_id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!city_id.equals(other.city_id))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
-	
-
 }

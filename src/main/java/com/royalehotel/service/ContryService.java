@@ -18,5 +18,8 @@ public interface ContryService {
 	List<Country> findAll();
 
 	Optional<Country> findById(Long id);
+	boolean isValidCountry(Country country);
+
+	Country findByCode(String code);
 
 }

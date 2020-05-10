@@ -28,6 +28,8 @@ public class State implements Serializable{
 	private Long id;
 	@Column(name = "STATE_NAME")
 	private String name;
+	@Column(name = "STATE_CODE")
+	private String code;
 	@Column(name = "STATE_STATUS")
 	private String status;
 
@@ -69,6 +71,14 @@ public class State implements Serializable{
 
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+	
+	public String getCode() {
+		return code;
+	}
+	
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 }

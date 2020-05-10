@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.royalehotel.common.RestResponse;
 import com.royalehotel.model.CarDetails;
 import com.royalehotel.model.CarType;
+import com.royalehotel.model.City;
 import com.royalehotel.model.Country;
 import com.royalehotel.model.Language;
 import com.royalehotel.model.State;
@@ -29,8 +30,10 @@ import com.royalehotel.repository.CarDetailsRepositiory;
 import com.royalehotel.repository.CarTypeRepositiory;
 import com.royalehotel.repository.CountryRepositiory;
 import com.royalehotel.repository.LanguageRepositiory;
+import com.royalehotel.service.CityService;
 import com.royalehotel.service.ContryService;
 import com.royalehotel.service.StateService;
+import com.royalehotel.exceptions.ValidationException;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -41,6 +44,9 @@ public class LocationController {
 
 	@Autowired
 	StateService stateService;
+	
+	@Autowired
+	CityService cityService;
 
 	@Autowired
 	RestResponse response;
@@ -55,9 +61,8 @@ public class LocationController {
 	CarDetailsRepositiory carDetailsRepository;
 
 	@PostMapping("/country")
-	public Country getCountry(@RequestBody Country country) {
-		countryService.save(country);
-		return country;
+	public Country getCountry(@RequestBody Country country) {		
+		return countryService.save(country);		
 	}
 
 	/*
@@ -75,14 +80,10 @@ public class LocationController {
 		return createResponse(Arrays.asList(countryService.findByName(name)));
 	}
 
-	@GetMapping("/country/{id}")
-	public RestResponse getCountryById(@PathVariable Long id) {
-		return createResponse(Arrays.asList(countryService.findById(id)));
-	}
 
 	@PostMapping("/state")
-	public State getState(@RequestBody State country) {
-		return stateService.save(country);
+	public State getState(@RequestBody State state) {
+		return stateService.save(state);
 	}
 
 	/*
@@ -102,7 +103,20 @@ public class LocationController {
 		} else {
 			return createResponse(Arrays.asList(stateService.findByCountryId(name)));
 		}
-
+	}
+	
+	@PostMapping("/city")
+	public City postCity(@RequestBody City city) {
+		return cityService.save(city);
+	}
+	
+	@GetMapping("/city")
+	public RestResponse getCities(@RequestParam(name = "stateid", required=false) Long stateId) {
+		if(StringUtils.isEmpty(stateId)) {
+			return createResponse(cityService.findAll());
+		}else {
+			return createResponse(cityService.findByStateId(stateId));
+		}
 	}
 
 	@PostMapping("/languages")

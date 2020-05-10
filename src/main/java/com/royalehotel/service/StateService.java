@@ -19,7 +19,7 @@ public interface StateService {
 
 	Optional<State> findById(Long id);
 
-	Optional<State> findByCountryId(Long id);
+	List<State> findByCountryId(Long id);
 
 	List<State> findAll();
 

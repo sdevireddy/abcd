@@ -9,6 +9,7 @@ import com.royalehotel.model.Country;
 
 public interface CountryRepositiory extends JpaRepository<Country, Long> {
 	Country findByName(String name);
-
-	
+	Country findByCode(String code);
+	Country findByNameAndCode(String name,String code);
+	List<Country> deleteByName(String name);	
 }

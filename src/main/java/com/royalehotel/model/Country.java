@@ -20,12 +20,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Country implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "country_id")
 	private Long id;
+	
 	@Column(name = "country_name")
 	private String name;
+	
+	@Column(name = "country_code")
+	private String code;
+	
 	@Column(name = "country_status")
 	private String status;
 	
@@ -47,6 +56,14 @@ public class Country implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getCode() {
+		return code;		
+	}
+	
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getStatus() {
