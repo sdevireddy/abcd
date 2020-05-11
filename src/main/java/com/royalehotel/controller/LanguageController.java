@@ -39,10 +39,10 @@ public class LanguageController {
 	@Autowired
 	CommonService commonService;
 	
-//	@PostMapping("/languages")
-//	public RestResponse languages(@RequestBody List<Language> languages) {
-//		return commonService.createResponse(languageService.saveAll(languages));
-//	}
+	@PostMapping("/languages")
+	public RestResponse languages(@RequestBody List<Language> languages) {
+		return commonService.createResponse(languageService.saveAll(languages));
+	}
 	
 	@PostMapping("/language")
 	public RestResponse language(@RequestBody Language language) {
