@@ -16,10 +16,10 @@ import com.royalehotel.repository.UserRepository;
 public interface LanguageService {
 	Language save(Language user);
 
-	Optional<State> findByLanguageId(Long id);
+	Optional<Language> findByLanguageId(Long id);
 
-	List<State> findAll();
+	List<Language> findAll();
 
-	List<Language> saveAll(List<Language> language);
+	//List<Language> saveAll(List<Language> language);
 
 }

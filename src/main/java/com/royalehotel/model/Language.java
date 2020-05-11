@@ -10,14 +10,11 @@ import javax.persistence.Id;
 public class Language {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="LANGUAGE_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Long id;
-
-	@Column(name = "LANGUAGE_CODE")
 	private String code;
-	@Column(name = "LANGUAGE_NAME")
 	private String name;
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -41,6 +38,14 @@ public class Language {
 
 	public void setName(String language) {
 		this.name = language;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+	
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

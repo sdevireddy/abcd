@@ -9,6 +9,8 @@ import com.royalehotel.model.Language;
 
 public interface LanguageRepositiory extends JpaRepository<Language, Long> {
 
-	List<Language> save(List<Language> language);
-
+	Language save(Language language);
+	//List<Language> saveAll(List<Language> languages);
+	List<Language> findAll();
+	Optional<Language> findById(Long id);
 }

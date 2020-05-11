@@ -26,18 +26,18 @@ public class LanguageServiceImpl implements LanguageService {
 		return languageRepository.save(language);
 	}
 	
+//	@Override
+//	public List<Language> saveAll(List<Language> languages) {
+//		return languageRepository.saveAll(languages);
+//	}
+
 	@Override
-	public List<Language> saveAll(List<Language> language) {
-		return languageRepository.saveAll(language);
+	public Optional<Language> findByLanguageId(Long id) {		
+		return languageRepository.findById(id);
 	}
 
 	@Override
-	public Optional<State> findByLanguageId(Long id) {
-		return null;
-	}
-
-	@Override
-	public List<State> findAll() {
-		return null;
+	public List<Language> findAll() {
+		return languageRepository.findAll();
 	}
 }
