@@ -9,5 +9,6 @@ import com.royalehotel.model.City;
 public interface CityRepositiory extends JpaRepository<City, Long> {
 	public List<City> findByName(String name);
 	public List<City> findAll();
-	public List<City> findByStateId(Long stateId);
+	public List<City> findByNameAndCode(String name,String code);
+	public List<City> findByStateId(Long stateId);	
 }

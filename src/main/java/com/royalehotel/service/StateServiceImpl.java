@@ -28,17 +28,18 @@ public class StateServiceImpl implements StateService {
 	@Override
 	@Transactional
 	public State save(State state) {
-		if(!isValidState(state)) {
+		if (!isValidState(state)) {
 			throw new ValidationException("state code, name and countryid are manadatory");
 		}
-		if(state.getStatus().equals("1") && stateRepository.findByNameAndCode(state.getName(), state.getCode()) != null) {
-			throw new ValidationException("state with this code and name already exists");			
+		if (state.getStatus().equals("1")
+				&& stateRepository.findByNameAndCode(state.getName(), state.getCode()) != null) {
+			throw new ValidationException("state with this code and name already exists");
 		}
-		if(state.getStatus().equals("0") && stateRepository.findByNameAndCode(state.getName(),state.getCode()) != null ) {
-			List<State> states =  stateRepository.deleteByNameAndCode(state.getName(),state.getCode());
-			return states.get(0);
-		}else {
-		stateRepository.save(state);
+		if (state.getStatus().equals("0") && stateRepository.findById(state.getId()) != null) {
+			stateRepository.deleteById(state.getId());
+			return state;
+		} else {
+			stateRepository.save(state);
 		}
 		return state;
 	}
@@ -52,15 +53,7 @@ public class StateServiceImpl implements StateService {
 		return countryRepository.findByName(name);
 	}
 
-	/*
-	 * @Override public Country findByCountryId(Long id) { return
-	 * countryRepository.findByCountryId(id);
-	 * 
-	 * }
-	 */
 	
-	
-
 	@Override
 	public Optional<State> findById(Long id) {
 		return stateRepository.findById(id);
@@ -75,17 +68,17 @@ public class StateServiceImpl implements StateService {
 	public List<State> findByCountryId(Long id) {
 		return stateRepository.findByCountryId(id);
 	}
-	
+
 	public boolean isValidState(State state) {
-		if(state.getName() == null || state.getName().isEmpty())
+		if (state.getName() == null || state.getName().isEmpty())
 			return false;
-		if(state.getCode() == null || state.getCode().isEmpty())
+		if (state.getCode() == null || state.getCode().isEmpty())
 			return false;
-		if(state.getCountry() == null){
+		if (state.getCountryId() == null) {
 			return false;
 		}
-		
-		return true;		
+
+		return true;
 	}
 
 }

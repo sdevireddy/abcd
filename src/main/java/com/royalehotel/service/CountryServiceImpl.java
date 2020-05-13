@@ -30,9 +30,9 @@ public class CountryServiceImpl implements ContryService {
 		if(country.getStatus().equals("1") && countryRepository.findByNameAndCode(country.getName(), country.getCode()) != null) {
 			throw new ValidationException("country already exists");			
 		}
-		if(country.getStatus().equals("0") && findByName(country.getName()) != null ) {
-			List<Country> countries =  countryRepository.deleteByName(country.getName());
-			return countries.get(0);
+		if(country.getStatus().equals("0") && countryRepository.findById(country.getId()) != null ) {
+			countryRepository.deleteById(country.getId());
+			return country;
 		}else {
 		return countryRepository.save(country);
 		}

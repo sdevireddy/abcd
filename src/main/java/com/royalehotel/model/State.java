@@ -19,23 +19,16 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "state")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class State implements Serializable{
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+public class State implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "STATE_ID")
 	private Long id;
-	@Column(name = "STATE_NAME")
 	private String name;
-	@Column(name = "STATE_CODE")
 	private String code;
-	@Column(name = "STATE_STATUS")
 	private String status;
-
-	@ManyToOne(fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "COUNTRY_ID", nullable = false, referencedColumnName = "country_id")
-	private Country country;
+	private Long countryId;
 
 	State() {
 
@@ -65,18 +58,18 @@ public class State implements Serializable{
 		this.status = status;
 	}
 
-	public Country getCountry() {
-		return country;
+	public Long getCountryId() {
+		return countryId;
 	}
 
-	public void setCountry(Country country) {
-		this.country = country;
+	public void setCountryId(Long countryId) {
+		this.countryId = countryId;
 	}
-	
+
 	public String getCode() {
 		return code;
 	}
-	
+
 	public void setCode(String code) {
 		this.code = code;
 	}

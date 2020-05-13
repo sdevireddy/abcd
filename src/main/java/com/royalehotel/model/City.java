@@ -14,20 +14,12 @@ public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "city_id")
 	Long id;
-	
-	@Column(name = "city_name")
+	String code;
 	String name;
-	
-	@Column(name = "city_desc")
-	String desc;
-	
-	@Column(name = "state_id")
+	String description;
 	Long stateId;
-	
-	@Column(name = "status")
-	int status;
+	String status;
 	
 	public Long getId() {
 		return id;
@@ -35,17 +27,25 @@ public class City {
 	public void setId(Long cityId) {
 		this.id = cityId;
 	}
+	
+	public String getCode() {
+		return code;
+	}
+	
+	public void setCode(String code) {
+		this.code = code;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String cityDesc) {
-		this.desc = cityDesc;
+	public void setDescription(String cityDesc) {
+		this.description = cityDesc;
 	}
 	
 	public Long getStateId(){
@@ -56,11 +56,11 @@ public class City {
 		this.stateId = stateId;
 	}
 	
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 	
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	
@@ -68,7 +68,7 @@ public class City {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((desc == null) ? 0 : desc.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
@@ -82,10 +82,10 @@ public class City {
 		if (getClass() != obj.getClass())
 			return false;
 		City other = (City) obj;
-		if (desc == null) {
-			if (other.desc != null)
+		if (description == null) {
+			if (other.description != null)
 				return false;
-		} else if (!desc.equals(other.desc))
+		} else if (!description.equals(other.description))
 			return false;
 		if (name == null) {
 			if (other.name != null)

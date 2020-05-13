@@ -25,17 +25,10 @@ public class Country implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "country_id")
-	private Long id;
-	
-	@Column(name = "country_name")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private Long id;	
 	private String name;
-	
-	@Column(name = "country_code")
 	private String code;
-	
-	@Column(name = "country_status")
 	private String status;
 	
 	Country() {

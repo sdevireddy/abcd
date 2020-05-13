@@ -12,4 +12,5 @@ public interface CountryRepositiory extends JpaRepository<Country, Long> {
 	Country findByCode(String code);
 	Country findByNameAndCode(String name,String code);
 	List<Country> deleteByName(String name);	
+	void deleteById(Long id);
 }
